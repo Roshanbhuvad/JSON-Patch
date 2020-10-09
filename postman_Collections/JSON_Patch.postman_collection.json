@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "155a831a-4f7a-4a05-9a29-27a4d531efd7",
+		"name": "JSON_Patch",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users routes",
+			"item": [
+				{
+					"name": "http://localhost:3000/api/users/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"roshan\",\r\n    \"password\": \"Roshan1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						},
+						"description": "Logged in user with token"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Json_Patch",
+			"item": [
+				{
+					"name": "http://localhost:3000/api/patch-object",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvc2hhbiIsImlhdCI6MTYwMjIzMDIzNywiZXhwIjoxNjAyMjUxODM3fQ.OQEIBVOmkGsMbeAEOyxGCzf6ik9q4tTkuPJwSFGG9Do",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "jsonObject",
+									"value": "{ \"user\": { \"firstName\": \"roshan\", \"lastName\": \"bhuvad\" } }",
+									"type": "text"
+								},
+								{
+									"key": "jsonPatchObject",
+									"value": "[{\"op\": \"replace\", \"path\": \"/user/firstName\", \"value\": \"nikhil\"}, {\"op\": \"replace\", \"path\": \"/user/lastName\", \"value\": \"medappa\"}]",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/patch-object",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"patch-object"
+							]
+						},
+						"description": "Json_patch"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Thumbnail_images",
+			"item": [
+				{
+					"name": "http://localhost:3000/api/create-thumbnail",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvc2hhbiIsImlhdCI6MTYwMjIzMDIzNywiZXhwIjoxNjAyMjUxODM3fQ.OQEIBVOmkGsMbeAEOyxGCzf6ik9q4tTkuPJwSFGG9Do",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "imageUrl",
+									"value": "https://images-na.ssl-images-amazon.com/images/I/71hn7-p46%2BL._SL1500_.jpg",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/create-thumbnail",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"create-thumbnail"
+							]
+						},
+						"description": "Thumbnail_image"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

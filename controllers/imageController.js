@@ -11,8 +11,6 @@ const {
 
 const imageTypes = ["jpg", "tif", "gif", "png", "svg"];
 
-// resizing the image on post request
-
 exports.create_thumbnail_post = (req, res, next) => {
     const {
         imageUrl

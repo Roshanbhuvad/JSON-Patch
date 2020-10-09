@@ -4,7 +4,8 @@
   "description": "Image Thumbnail & JSON Patch",
   "main": "index.js",
   "scripts": {
-    "test": "NPM install"
+    "start": "npm start",
+    "test": "npm test"
   },
   "repository": {
     "type": "git",

@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken')
 require('dotenv').load()
 
 // Get the extension of a url/file
-// Credit for regular expression - https://stackoverflow.com/a/47767860/2377343
 exports.fileExtension = (url) => {
     return url.split('.').pop().split(/\#|\?/)[0]
 }
@@ -13,7 +12,6 @@ exports.verifyToken = (req, res, next) => {
         token
     } = req.headers
 
-    // Return forbidden status if the token is not available
     if (!token) {
         return res.status(403).json({
             authorized: false,
@@ -30,7 +28,6 @@ exports.verifyToken = (req, res, next) => {
             })
         }
 
-        // No error so save decoded token into req.user and go to next process.
         req.user = decoded
         next()
     })

@@ -71,16 +71,16 @@ paths:
       security:
         - Bearer: []
       tags:
-        - Product Module
+        - Json Patch Module
       summary: Generate Json Patch 
       description: Generating patch by json Object 
       parameters:
         - name: body
           in: body
-          description: Create Image thumbnail Payload
+          description: Create Json Patch Payload
           required: true
           schema:
-            $ref: "#/definitions/jsonObject"
+            $ref: "#/definitions/Json_patch"
       produces:
         - application/json
       responses:
@@ -112,7 +112,7 @@ definitions:
       imageUrl:
         type: string
         description: Image URL
-  Json patch:
+  Json_patch:
     properties:
         jsonObject:
             type: Json

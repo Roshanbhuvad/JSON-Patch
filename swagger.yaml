@@ -1,0 +1,132 @@
+swagger: "2.0"
+info:
+  description: JSON Patch
+  version: "1.0.0"
+  title: Swagger Specification
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: roshanbhuvad15@gmail.com
+  license:
+    name: Apache 2.0
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: localhost:3000
+basePath: /api
+schemes:
+  - http
+paths:
+  /api/users/login:
+    post:
+      tags:
+        - User Module
+      summary: Login
+      description: API for Login
+      parameters:
+        - in: body
+          name: body
+          description: Login Payload
+          required: true
+          schema:
+            $ref: "#/definitions/User"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Login Successfully
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        "400":
+          description: Invalid Fields
+        "500":
+          description: Internal Server Error
+  
+  /api/create-thumbnail:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - Thumbnail Module
+      summary: Image Thumbnail API
+      description: API for Image Thumbnail
+      parameters:
+        - in: body
+          name: body
+          description: Create Image thumbnail Payload
+          required: true
+          schema:
+            $ref: "#/definitions/thumbnail"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Image Thumbnail Successfully
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        "400":
+          description: Invalid Fields
+        "500":
+          description: Internal Server Error
+
+  /api/patch-object:
+    patch:
+      security:
+        - Bearer: []
+      tags:
+        - Product Module
+      summary: Generate Json Patch 
+      description: Generating patch by json Object 
+      parameters:
+        - name: body
+          in: body
+          description: Create Image thumbnail Payload
+          required: true
+          schema:
+            $ref: "#/definitions/jsonObject"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Patch created Successfully
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        "400":
+          description: Invalid Fields
+        "500":
+          description: Internal Server Error
+    
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: token
+    in: header
+definitions:
+  User:
+    properties:
+      username:
+        type: string
+        description: Username of user
+      password:
+        type: string
+        description: password of the user
+  Thumbnail:
+    properties:
+      imageUrl:
+        type: string
+        description: Image URL
+  Json patch:
+    properties:
+        jsonObject:
+            type: Json
+            description: Json  Object
+        jsonObject:
+            type: array
+            description: JSON patch data URL     
+      
+  ApiResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+      body:
+        type: object

@@ -14,15 +14,17 @@ var morgan = require("morgan");
 
 var fs = require("fs");
 
+var swaggerUi = require("swagger-ui-express");
+
+var YAML = require("yamljs");
+
+var swaggerDocument = YAML.load("./swagger.yaml");
+
 var users = require("./routes/users");
 
 var api = require("./routes/image");
 
 var app = express();
-
-var swaggerUi = require('swagger-ui-express'),
-    swaggerDocument = require('./swagger.json');
-
 var accessLogStream = fs.createWriteStream(path.join(__dirname, "hackerbay.log"), {
   flags: "a"
 });
@@ -38,18 +40,18 @@ app.use(morgan("combined", {
 }));
 app.use("/api", api);
 app.use("/api/users", users);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use("/api/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(function (req, res, next) {
   /*const err = new Error("Not Found");
   err.status = 404;
   res.status(404).send({
-    error: "Page does not exist",
+    error: "Page does not exist", 
   }); */
 });
-app.use(function (err, req, res) {//res.locals.error = req.app.get("env") === "development" ? err : {};
-
-  /*render the error page
+app.use(function (err, req, res) {
+  /*res.locals.error = req.app.get("env") === "development" ? err : {};
+    //render the error page
   res.status(err.status || 500);
-  res.render("error");*/
+  res.render("error"); */
 });
 module.exports = app;

@@ -2,10 +2,9 @@
   "name": "json-patch",
   "version": "1.0.0",
   "description": "Image Thumbnail & JSON Patch",
-  "main": "index.js",
   "scripts": {
-    "start": "npm start",
-    "test": "npm test"
+    "start": "nodemon ./bin/www",
+    "test": "nyc mocha"
   },
   "repository": {
     "type": "git",

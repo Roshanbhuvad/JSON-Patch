@@ -11,6 +11,10 @@ const api = require("./routes/image");
 
 const app = express();
 
+const accessLogStream = fs.createWriteStream(
+  path.join(__dirname, "hackerbay.log"),
+  { flags: "a" }
+);
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(
@@ -44,9 +48,6 @@ app.use((err, req, res) => {
   //render the error page
   res.status(err.status || 500);
   res.render("error"); */
-});
-app.listen(5000, () => {
-  console.log("Server started at http://localhost:5000");
 });
 
 module.exports = app;

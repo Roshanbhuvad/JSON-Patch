@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken')
-require('dotenv').load()
+const {
+    JWT_SECRET
+} = require("../config/key")
 
 // Get the extension of a url/file
 exports.fileExtension = (url) => {
@@ -20,7 +22,7 @@ exports.verifyToken = (req, res, next) => {
     }
 
     // Verify token
-    jwt.verify(token, process.env.jwtSecret, (err, decoded) => {
+    jwt.verify(token, JWT_SECRET, (err, decoded) => {
         if (err) {
             return res.status(401).send({
                 authorized: false,
